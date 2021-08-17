@@ -2,7 +2,6 @@
 import React from 'react';
 
 // Material UI
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 // External Components
@@ -12,26 +11,21 @@ import BurgerMenu from './BurgerMenu';
 import MobileMenu from './MobileMenu';
 
 // Helpers
-import { useStyles } from './styles';
+import { useStyles, StyledAppBar } from './styles';
 
 export default function Header({ search }) {
   const classes = useStyles();
 
   return (
     <div className={classes.grow}>
-      <AppBar
-        classes={{
-          root: classes.appBar,
-        }}
-        position="static"
-      >
+      <StyledAppBar position="static">
         <Toolbar>
           <BurgerMenu />
           <SearchInput onFormSubmit={search} />
           <DesktopMenu />
           <MobileMenu />
         </Toolbar>
-      </AppBar>
+      </StyledAppBar>
     </div>
   );
 }

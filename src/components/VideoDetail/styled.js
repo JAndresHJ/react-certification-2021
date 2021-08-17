@@ -8,4 +8,5 @@ export const VideoDetailContainer = styled.div`
 export const LoadingContainer = styled.div`
   grid-column: 1 / -1;
   place-self: center;
+  align-self: auto;
 `;

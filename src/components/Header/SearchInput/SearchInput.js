@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 // Material UI
 import InputBase from '@material-ui/core/InputBase';
@@ -6,14 +6,22 @@ import SearchIcon from '@material-ui/icons/Search';
 
 // Helpers
 import { useStyles } from './styles';
+import { ACTIONS } from '../../../store/GlobalContext/constants';
+
+// Context
+import GlobalContext from '../../../store/GlobalContext/GlobalContext';
 
 const SearchInput = ({ onFormSubmit }) => {
   const classes = useStyles();
+  const { dispatch } = useContext(GlobalContext);
   const [term, setTerm] = useState('');
 
   const onSubmit = (event) => {
     event.preventDefault();
-
+    dispatch({
+      type: ACTIONS.SET_SEARCH_TERM,
+      payload: term,
+    });
     onFormSubmit(term);
   };
 

@@ -8,10 +8,12 @@ export const MainContainer = styled.main`
   grid-template-columns: repeat(auto-fill, 345px);
   grid-template-rows: auto 1fr;
   justify-content: space-evenly;
+  background-color: ${(props) => props.theme.bg.primary};
 `;
 
 export const StyledTypography = styled(Typography)`
   grid-column: 1 / -1;
   margin-top: 20px;
   text-align: center;
+  color: ${(props) => props.theme.fg};
 `;

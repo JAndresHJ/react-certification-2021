@@ -1,10 +1,11 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import Header from '../Header';
+import GlobalContext from '../../../store/GlobalContext/GlobalContext';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('Header component', () => {
-  it('displays the title of the video', () => {
+  it('displays login option', () => {
     render(<Header />);
 
     const darkModeElement = screen.getByText('Login');
@@ -13,7 +14,20 @@ describe('Header component', () => {
   });
 
   it('tests the state change', () => {
-    const { getByLabelText } = render(<Header />);
+    const state = {
+      isDarkMode: false,
+      searchTerm: '',
+    };
+    const { getByLabelText } = render(
+      <GlobalContext.Provider
+        value={{
+          state,
+          dispatch: () => {},
+        }}
+      >
+        <Header />
+      </GlobalContext.Provider>
+    );
     const switchElement = getByLabelText('Dark mode');
 
     fireEvent.click(switchElement);

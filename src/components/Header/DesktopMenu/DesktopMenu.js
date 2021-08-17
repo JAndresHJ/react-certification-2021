@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 // Material UI
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -10,16 +10,30 @@ import Switch from '@material-ui/core/Switch';
 
 // Helpers
 import { useStyles } from './styles';
+import { ACTIONS, LS_KEYS } from '../../../store/GlobalContext/constants';
+
+// Context
+import GlobalContext from '../../../store/GlobalContext/GlobalContext';
 
 const menuId = 'primary-search-account-menu';
 
 const DesktopMenu = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
+  const { dispatch } = useContext(GlobalContext);
   const [isDarkMode, setIsDarkedMode] = useState(false);
 
   const handleChange = (event) => {
     setIsDarkedMode(event.target.checked);
+    dispatch({
+      type: ACTIONS.SET_IS_DARK_MODE,
+      payload: event.target.checked,
+    });
+
+    localStorage.setItem(
+      LS_KEYS.APP_THEME,
+      JSON.stringify({ isDarkMode: event.target.checked })
+    );
   };
 
   const handleProfileMenuOpen = (event) => {

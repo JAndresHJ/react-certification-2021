@@ -1,7 +1,6 @@
 import React from 'react';
 
 // Material UI
-import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -9,13 +8,13 @@ import Typography from '@material-ui/core/Typography';
 import CardHeader from '@material-ui/core/CardHeader';
 
 // Styles
-import { useStyles } from './styles';
+import { useStyles, StyledCard } from './styles';
 
 const VideoItem = ({ title, publishTime, thumbnails, description }) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <StyledCard className={classes.root}>
       <CardHeader title={title} subheader={publishTime.substring(0, 10)} />
       <CardActionArea>
         <CardMedia className={classes.media} image={thumbnails.high.url} title={title} />
@@ -25,7 +24,7 @@ const VideoItem = ({ title, publishTime, thumbnails, description }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </StyledCard>
   );
 };
 
