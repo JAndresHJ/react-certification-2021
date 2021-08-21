@@ -32,18 +32,18 @@ const mockedVideo = {
   },
 };
 
+beforeEach(() => {
+  render(<VideoDetail video={mockedVideo} />);
+});
+
 describe('VideoItem component', () => {
   it('displays the title of the video', () => {
-    render(<VideoDetail video={mockedVideo} />);
-
     const titleElement = screen.getByText(mockedVideo.snippet.title);
 
     expect(titleElement).toBeInTheDocument();
   });
 
-  it('displays the title of the video', () => {
-    render(<VideoDetail video={mockedVideo} />);
-
+  it('displays the description of the video', () => {
     const descriptionElement = screen.getByText(mockedVideo.snippet.description);
 
     expect(descriptionElement).toBeInTheDocument();

@@ -1,0 +1,9 @@
+export const ACTIONS = {
+  SET_IS_DARK_MODE: 'SET_IS_DARK_MODE',
+  SET_SEARCH_TERM: 'SET_SEARCH_TERM',
+};
+
+export const LS_KEYS = {
+  APP_THEME: 'APP_THEME',
+  SEARCH_TERM: 'SEARCH_TERM',
+};
