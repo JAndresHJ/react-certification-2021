@@ -6,8 +6,9 @@ import { ThemeProvider } from 'styled-components';
 import useVideos from '../../hooks/useVideos';
 
 // Components
-import Home from '../../pages/Home/Home';
+// import Home from '../../pages/Home/Home';
 import Header from '../Header';
+import Router from '../Router';
 
 // Context
 import GlobalContext from '../../store/GlobalContext/GlobalContext';
@@ -22,7 +23,7 @@ import { darkTheme, lightTheme } from '../../theme';
 
 function App() {
   const [state, dispatch] = useReducer(globalContextReducer, initialState);
-  const { videos, search } = useVideos('wizeline');
+  const { search } = useVideos('wizeline');
 
   const appTheme = JSON.parse(localStorage.getItem(LS_KEYS.APP_THEME));
   let currentTheme = lightTheme;
@@ -39,7 +40,10 @@ function App() {
     >
       <ThemeProvider theme={currentTheme}>
         <Header search={search} />
-        <Home videos={videos} />
+        <Router />
+        {/* <Home /> */}
+        {/* <Header search={search} />
+        <Router /> */}
       </ThemeProvider>
     </GlobalContext.Provider>
   );

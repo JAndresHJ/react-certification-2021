@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 // Material UI
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -10,11 +11,25 @@ import CardHeader from '@material-ui/core/CardHeader';
 // Styles
 import { useStyles, StyledCard } from './styles';
 
-const VideoItem = ({ title, publishTime, thumbnails, description }) => {
+const VideoItem = ({
+  title,
+  publishTime,
+  thumbnails,
+  description,
+  onVideoSelect,
+  video,
+}) => {
   const classes = useStyles();
 
+  const { push } = useHistory();
+
+  const handleClick = () => {
+    push(`/${video.id.videoId}`);
+    onVideoSelect(video);
+  };
+
   return (
-    <StyledCard className={classes.root}>
+    <StyledCard onClick={handleClick} className={classes.root}>
       <CardHeader title={title} subheader={publishTime.substring(0, 10)} />
       <CardActionArea>
         <CardMedia className={classes.media} image={thumbnails.high.url} title={title} />

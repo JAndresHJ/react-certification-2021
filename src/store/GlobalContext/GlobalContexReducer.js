@@ -2,7 +2,7 @@ import { ACTIONS } from './constants';
 
 export const initialState = {
   isDarkMode: false,
-  searchTerm: '',
+  searchTerm: 'wizeline',
 };
 
 export const globalContextReducer = (state, action) => {

@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 const GlobalContext = createContext({
   isDarkMode: false,
-  searchTerm: '',
+  searchTerm: 'wizeline',
 });
 
 export default GlobalContext;

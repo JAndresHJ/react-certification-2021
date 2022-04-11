@@ -14,6 +14,7 @@ import { ACTIONS, LS_KEYS } from '../../../store/GlobalContext/constants';
 
 // Context
 import GlobalContext from '../../../store/GlobalContext/GlobalContext';
+import LoginDialog from '../../LoginDialog';
 
 const menuId = 'primary-search-account-menu';
 
@@ -22,6 +23,7 @@ const DesktopMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const { dispatch } = useContext(GlobalContext);
   const [isDarkMode, setIsDarkedMode] = useState(false);
+  const [loginDialogOpen, setLoginDialogOpen] = useState(false);
 
   const handleChange = (event) => {
     setIsDarkedMode(event.target.checked);
@@ -42,6 +44,7 @@ const DesktopMenu = () => {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    setLoginDialogOpen(true);
   };
 
   const isMenuOpen = Boolean(anchorEl);
@@ -77,6 +80,7 @@ const DesktopMenu = () => {
         <AccountCircle />
       </IconButton>
       {renderMenu}
+      <LoginDialog isOpen={loginDialogOpen} close={() => setLoginDialogOpen(false)} />
     </div>
   );
 };

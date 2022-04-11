@@ -17,4 +17,7 @@ export const StyledCard = styled(Card)`
   div > * {
     color: ${(props) => props.theme.text};
   }
+  & :hover {
+    cursor: pointer;
+  }
 `;

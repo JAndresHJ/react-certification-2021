@@ -1,25 +1,35 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 // Components
 import VideoList from '../../components/Videos';
-import VideoDetail from '../../components/VideoDetail/VideoDetail';
+// import VideoDetail from '../../components/VideoDetail/VideoDetail';
 
+// Custom hooks
+import useVideos from '../../hooks/useVideos';
+
+// Context
+import GlobalContext from '../../store/GlobalContext/GlobalContext';
+
+// Styled components
 import { MainContainer, StyledTypography } from './styled';
 
-const Home = ({ videos }) => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
+const Home = () => {
+  const { state } = useContext(GlobalContext);
+  const { videos } = useVideos(state.searchTerm);
+  // const [selectedVideo, setSelectedVideo] = useState(null);
 
-  useEffect(() => {
+  /* useEffect(() => {
     setSelectedVideo(videos[0]);
-  }, [videos]);
+  }, [videos]); */
 
   return (
     <MainContainer>
       <StyledTypography variant="h2" gutterBottom>
         Welcome to the Challenge!
       </StyledTypography>
-      <VideoDetail video={selectedVideo} />
-      <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
+      {/* <VideoDetail video={selectedVideo} /> */}
+      {/*  <VideoList videos={videos} onVideoSelect={setSelectedVideo} /> */}
+      <VideoList videos={videos} />
     </MainContainer>
   );
 };

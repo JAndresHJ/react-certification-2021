@@ -16,6 +16,7 @@ const VideoList = ({ videos, onVideoSelect }) => {
             publishTime={video.snippet.publishTime}
             thumbnails={video.snippet.thumbnails}
             onVideoSelect={onVideoSelect}
+            video={video}
           />
         ))}
     </>
